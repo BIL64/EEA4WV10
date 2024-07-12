@@ -25,6 +25,18 @@ Public Class FrmSearch
         lblFINDS.Text = "Finds = ?"
         mecolor = Me.BackColor
         selectcolor = Color.LightSteelBlue
+        ttSEARCH.OwnerDraw = True
+        ttSEARCH.SetToolTip(btnSEARCHALL, "The font style changes if the keyword         " _
+        & vbCrLf & "has multiple colors or sizes!")
+        AddHandler ttSEARCH.Draw, AddressOf ToolTip_Draw
+    End Sub
+
+    Private Sub ToolTip_Draw(sender As Object, e As DrawToolTipEventArgs)
+        Dim f As New Font("Arial", 10.0F)
+        ttSEARCH.BackColor = Color.FromArgb(255, 235, 235)
+        e.DrawBackground()
+        e.DrawBorder()
+        e.Graphics.DrawString(e.ToolTipText, f, Brushes.Black, New PointF(2, 2))
     End Sub
 
     Public Sub Search_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles MyBase.FormClosing

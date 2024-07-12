@@ -132,7 +132,6 @@ Partial Class FrmSearch
         btnSEARCHALL.TabIndex = 48
         btnSEARCHALL.Text = "ALL"
         btnSEARCHALL.TextAlign = ContentAlignment.TopCenter
-        ttSEARCH.SetToolTip(btnSEARCHALL, "The font style changes if the keyword has multiple colors or sizes!")
         btnSEARCHALL.UseVisualStyleBackColor = False
         ' 
         ' FrmSearch
