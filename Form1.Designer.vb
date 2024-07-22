@@ -205,7 +205,7 @@ Partial Class Form1
         tsmiNew.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiNew.ForeColor = Color.Indigo
         tsmiNew.Name = "tsmiNew"
-        tsmiNew.Size = New Size(180, 22)
+        tsmiNew.Size = New Size(174, 22)
         tsmiNew.Text = "New"
         ' 
         ' tsmiOpen
@@ -213,7 +213,7 @@ Partial Class Form1
         tsmiOpen.BackColor = Color.LightCyan
         tsmiOpen.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiOpen.Name = "tsmiOpen"
-        tsmiOpen.Size = New Size(180, 22)
+        tsmiOpen.Size = New Size(174, 22)
         tsmiOpen.Text = "Open File"
         ' 
         ' tsmiSave
@@ -221,7 +221,7 @@ Partial Class Form1
         tsmiSave.BackColor = Color.LightCyan
         tsmiSave.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiSave.Name = "tsmiSave"
-        tsmiSave.Size = New Size(180, 22)
+        tsmiSave.Size = New Size(174, 22)
         tsmiSave.Text = "Save File"
         ' 
         ' tsmiSA
@@ -229,7 +229,7 @@ Partial Class Form1
         tsmiSA.BackColor = Color.LightCyan
         tsmiSA.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiSA.Name = "tsmiSA"
-        tsmiSA.Size = New Size(180, 22)
+        tsmiSA.Size = New Size(174, 22)
         tsmiSA.Text = "Save As..."
         ' 
         ' tsmiLatest
@@ -238,7 +238,7 @@ Partial Class Form1
         tsmiLatest.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiLatest.ForeColor = Color.Indigo
         tsmiLatest.Name = "tsmiLatest"
-        tsmiLatest.Size = New Size(180, 22)
+        tsmiLatest.Size = New Size(174, 22)
         tsmiLatest.Text = "Open Job"
         ' 
         ' tsmiCLatest
@@ -247,7 +247,7 @@ Partial Class Form1
         tsmiCLatest.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiCLatest.ForeColor = Color.Indigo
         tsmiCLatest.Name = "tsmiCLatest"
-        tsmiCLatest.Size = New Size(180, 22)
+        tsmiCLatest.Size = New Size(174, 22)
         tsmiCLatest.Text = "Clear All Jobs"
         ' 
         ' tsmiPP
@@ -255,7 +255,7 @@ Partial Class Form1
         tsmiPP.BackColor = Color.LightCyan
         tsmiPP.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiPP.Name = "tsmiPP"
-        tsmiPP.Size = New Size(180, 22)
+        tsmiPP.Size = New Size(174, 22)
         tsmiPP.Text = "Preview Print"
         ' 
         ' tsmiPrint
@@ -263,7 +263,7 @@ Partial Class Form1
         tsmiPrint.BackColor = Color.LightCyan
         tsmiPrint.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiPrint.Name = "tsmiPrint"
-        tsmiPrint.Size = New Size(180, 22)
+        tsmiPrint.Size = New Size(174, 22)
         tsmiPrint.Text = "Print"
         ' 
         ' tsmiINITpos
@@ -272,7 +272,7 @@ Partial Class Form1
         tsmiINITpos.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         tsmiINITpos.ForeColor = Color.Indigo
         tsmiINITpos.Name = "tsmiINITpos"
-        tsmiINITpos.Size = New Size(180, 22)
+        tsmiINITpos.Size = New Size(174, 22)
         tsmiINITpos.Text = "Save Init Position"
         ' 
         ' tsmiExit
@@ -280,7 +280,7 @@ Partial Class Form1
         tsmiExit.BackColor = Color.LightCyan
         tsmiExit.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         tsmiExit.Name = "tsmiExit"
-        tsmiExit.Size = New Size(180, 22)
+        tsmiExit.Size = New Size(174, 22)
         tsmiExit.Text = "Close"
         ' 
         ' tsmEDIT
@@ -1450,7 +1450,7 @@ Partial Class Form1
         ' imgOpenFileDialog
         ' 
         imgOpenFileDialog.FileName = "Image"
-        imgOpenFileDialog.Filter = "JPEG (.jpg)|*.*"
+        imgOpenFileDialog.Filter = "*.ico;*.jpg;*.bmp;*.gif;*.png|*.*"
         ' 
         ' a4wPrintPreviewDialog
         ' 
