@@ -171,6 +171,12 @@ Public Class Form1
             MessageBox.Show("Cannot find custom file", "File recreated", MessageBoxButtons.OK, MessageBoxIcon.Warning,
             MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign)
         End If
+
+        If Not My.Computer.FileSystem.FileExists("Wordlang.var") Then
+            My.Computer.FileSystem.WriteAllText("Wordlang.var", "1033=English - United States", False)
+            MessageBox.Show("Cannot find word-language file", "File recreated", MessageBoxButtons.OK, MessageBoxIcon.Warning,
+            MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign)
+        End If
     End Sub
 
     Private Sub SetCustomA4L() 'Applicerar egen A4-storlek om Custom.var är sant och placerar programfönstret om <> XY.
@@ -1352,7 +1358,7 @@ Public Class Form1
         Dim lbl4 As New Label With {
             .Name = "e_lblEE4",
             .Font = sfe14,
-            .Text = "Ver 1.0",
+            .Text = "Ver 1.1",
             .ForeColor = ecolor,
             .TextAlign = 2,
             .Size = New Size(190, 28),
@@ -1509,9 +1515,14 @@ Public Class Form1
         rtbARK.Size = New Size(arkX_A4, arkY_A4S)
         pARK.Width = x_panel
 
-        If a4wPrintDialog.ShowDialog = DialogResult.OK Then 'Öppnar printdialogens fönster.  
-            a4wPrintDocument.Print() 'Skriver ut bladen.
-        End If
+        Try
+            If a4wPrintDialog.ShowDialog = DialogResult.OK Then 'Öppnar printdialogens fönster.  
+                a4wPrintDocument.Print() 'Skriver ut bladen.
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Fail to print" & vbCrLf & ex.Message, "Printing error", MessageBoxButtons.OK, MessageBoxIcon.Warning,
+            MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign)
+        End Try
 
         'Återställer skrollisten till auto.
         rtbARK.ScrollBars = ScrollBars.Vertical
@@ -1776,6 +1787,10 @@ Public Class Form1
         BtnOHM_Click(sender, e)
     End Sub
 
+    Private Sub TsmiSpellCheck_Click(sender As Object, e As EventArgs) Handles tsmiSpellcheck.Click 'Stavningskontroll med MS Word.
+        FrmWordLang.Show()
+    End Sub
+
     Private Sub TsmiEncoding_Click(sender As Object, e As EventArgs) Handles tsmiEncoding.Click 'Välj kodningstyp manuellt.
         FrmEncoding.Show()
     End Sub
@@ -2010,6 +2025,9 @@ Public Class Form1
             FrmTab.btnUNDO.Font = sfe8
             FrmTab.btnDEFAULT.Font = sfe8
             FrmTab.lblNUMBER.Font = sfe11
+            'FrmWordLang:
+            FrmWordLang.lblSELLANG.Font = sfe11
+            FrmWordLang.btnAPPLY.Font = sfe8
             'Form1:
             btnSNITT.Font = sfe12
             lblLeft.Font = sfe11C

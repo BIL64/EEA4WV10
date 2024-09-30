@@ -73,6 +73,7 @@ Partial Class Form1
         tsmiIndent = New ToolStripMenuItem()
         tsmiTab = New ToolStripMenuItem()
         tsmiSymbol = New ToolStripMenuItem()
+        tsmiSpellcheck = New ToolStripMenuItem()
         tsmiEncoding = New ToolStripMenuItem()
         tsmiTXTsizefont = New ToolStripMenuItem()
         tsmiA4S = New ToolStripMenuItem()
@@ -503,7 +504,7 @@ Partial Class Form1
         ' tsmOBJECT
         ' 
         tsmOBJECT.BackColor = SystemColors.Control
-        tsmOBJECT.DropDownItems.AddRange(New ToolStripItem() {tsmiImageL, tsmiBrowser, tsmiBulletl, tsmiNumberl, tsmiIndent, tsmiTab, tsmiSymbol, tsmiEncoding, tsmiTXTsizefont, tsmiA4S, tsmiRecreate})
+        tsmOBJECT.DropDownItems.AddRange(New ToolStripItem() {tsmiImageL, tsmiBrowser, tsmiBulletl, tsmiNumberl, tsmiIndent, tsmiTab, tsmiSymbol, tsmiSpellcheck, tsmiEncoding, tsmiTXTsizefont, tsmiA4S, tsmiRecreate})
         tsmOBJECT.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         tsmOBJECT.ForeColor = SystemColors.WindowFrame
         tsmOBJECT.Name = "tsmOBJECT"
@@ -570,6 +571,15 @@ Partial Class Form1
         tsmiSymbol.Name = "tsmiSymbol"
         tsmiSymbol.Size = New Size(278, 22)
         tsmiSymbol.Text = "Get symbol"
+        ' 
+        ' tsmiSpellcheck
+        ' 
+        tsmiSpellcheck.BackColor = Color.LightCyan
+        tsmiSpellcheck.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        tsmiSpellcheck.ForeColor = Color.Indigo
+        tsmiSpellcheck.Name = "tsmiSpellcheck"
+        tsmiSpellcheck.Size = New Size(278, 22)
+        tsmiSpellcheck.Text = "Spell Check MS Word"
         ' 
         ' tsmiEncoding
         ' 
@@ -927,7 +937,7 @@ Partial Class Form1
         btnPRINT.TabIndex = 26
         btnPRINT.Text = "Print"
         btnPRINT.TextAlign = ContentAlignment.TopCenter
-        a4wToolTip.SetToolTip(btnPRINT, "Print A4")
+        a4wToolTip.SetToolTip(btnPRINT, "Print A4, file, pdf")
         btnPRINT.UseVisualStyleBackColor = False
         ' 
         ' tbSNITT
@@ -1675,4 +1685,5 @@ Partial Class Form1
     Friend WithEvents tsmiRecreate As ToolStripMenuItem
     Friend WithEvents tsmiTXTsizefont As ToolStripMenuItem
     Friend WithEvents tsmiINITpos As ToolStripMenuItem
+    Friend WithEvents tsmiSpellcheck As ToolStripMenuItem
 End Class

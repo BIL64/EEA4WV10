@@ -14,7 +14,7 @@ Public Class FrmSearch
     Dim IsUsed As Boolean = False 'Pågår sökning?
     Dim IsClear As Boolean = True 'Är listorna rensade?
     Dim IsCase As Boolean = False 'Är skriftlägeskänslig på?
-    Dim IsWhole As Boolean = False 'Är skriftlägeskänslig på?
+    Dim IsWhole As Boolean = False 'Är sökning på ord på?
     Dim IsAll As Boolean = False 'Om sökning på allt.
     Dim finds As Integer = 0 'Räknare för antal sökta.
     Dim Isel, Lsel As Integer 'Index och Length för markerat innehåll.

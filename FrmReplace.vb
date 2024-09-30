@@ -9,7 +9,7 @@ Public Class FrmReplace
     Dim IsSelected As Boolean = False 'Är texten markerad?
     Dim IsUsed As Boolean = False 'Pågår sökning?
     Dim IsCase As Boolean = False 'Är skriftlägeskänslig på?
-    Dim IsWhole As Boolean = False 'Är skriftlägeskänslig på?
+    Dim IsWhole As Boolean = False 'Är sökning på ord på?
     Dim IsSame As Boolean = False 'Är sökordet och utbytesordet lika?
     Dim SC As String = "<-|*|->" 'Specialtecken om sökord och utbytesord är lika.
     Dim IsOnefont As Boolean = False 'Ska bara ett typsnitt och färger gälla?
