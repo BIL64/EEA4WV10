@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FrmLineSpace
+Partial Class FrmCharOffset
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,33 +22,33 @@ Partial Class FrmLineSpace
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        nudSPACE = New NumericUpDown()
-        lblSPACE = New Label()
+        nudOFFSET = New NumericUpDown()
+        lblOFFSET = New Label()
         btnRESET = New Button()
-        CType(nudSPACE, ComponentModel.ISupportInitialize).BeginInit()
+        CType(nudOFFSET, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' nudSPACE
+        ' nudOFFSET
         ' 
-        nudSPACE.Font = New Font("SF Electrotome Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        nudSPACE.Location = New Point(16, 32)
-        nudSPACE.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
-        nudSPACE.Minimum = New Decimal(New Integer() {100000, 0, 0, Integer.MinValue})
-        nudSPACE.Name = "nudSPACE"
-        nudSPACE.Size = New Size(56, 24)
-        nudSPACE.TabIndex = 0
+        nudOFFSET.Font = New Font("SF Electrotome Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        nudOFFSET.Location = New Point(16, 32)
+        nudOFFSET.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
+        nudOFFSET.Minimum = New Decimal(New Integer() {100000, 0, 0, Integer.MinValue})
+        nudOFFSET.Name = "nudOFFSET"
+        nudOFFSET.Size = New Size(56, 24)
+        nudOFFSET.TabIndex = 0
         ' 
-        ' lblSPACE
+        ' lblOFFSET
         ' 
-        lblSPACE.AutoSize = True
-        lblSPACE.BackColor = Color.Transparent
-        lblSPACE.Font = New Font("SF Electrotome", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        lblSPACE.ForeColor = Color.Navy
-        lblSPACE.Location = New Point(16, 8)
-        lblSPACE.Name = "lblSPACE"
-        lblSPACE.Size = New Size(64, 17)
-        lblSPACE.TabIndex = 44
-        lblSPACE.Text = "New value"
+        lblOFFSET.AutoSize = True
+        lblOFFSET.BackColor = Color.Transparent
+        lblOFFSET.Font = New Font("SF Electrotome", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        lblOFFSET.ForeColor = Color.Navy
+        lblOFFSET.Location = New Point(16, 8)
+        lblOFFSET.Name = "lblOFFSET"
+        lblOFFSET.Size = New Size(64, 17)
+        lblOFFSET.TabIndex = 44
+        lblOFFSET.Text = "New value"
         ' 
         ' btnRESET
         ' 
@@ -65,25 +65,25 @@ Partial Class FrmLineSpace
         btnRESET.TextAlign = ContentAlignment.TopCenter
         btnRESET.UseVisualStyleBackColor = False
         ' 
-        ' FrmLineSpace
+        ' FrmCharOffset
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(164, 71)
         Controls.Add(btnRESET)
-        Controls.Add(lblSPACE)
-        Controls.Add(nudSPACE)
+        Controls.Add(lblOFFSET)
+        Controls.Add(nudOFFSET)
         FormBorderStyle = FormBorderStyle.FixedToolWindow
-        Name = "FrmLineSpace"
-        Text = "Change V alignment"
+        Name = "FrmCharOffset"
+        Text = "Change Char Offset"
         TopMost = True
-        CType(nudSPACE, ComponentModel.ISupportInitialize).EndInit()
+        CType(nudOFFSET, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
 
     End Sub
 
-    Friend WithEvents nudSPACE As NumericUpDown
-    Friend WithEvents lblSPACE As Label
+    Friend WithEvents nudOFFSET As NumericUpDown
+    Friend WithEvents lblOFFSET As Label
     Friend WithEvents btnRESET As Button
 End Class

@@ -126,7 +126,8 @@ Public Class Form1
     Protected Overrides Sub WndProc(ByRef m As Message) 'Av user2480047. Gör så att inte den vertikala scrollisten dyker upp.
         Try
             ShowScrollBar(MyBase.Handle, 1, False)
-        Catch ex As Exception
+        Catch
+            'Ingen åtgärd
         End Try
         MyBase.WndProc(m)
     End Sub
@@ -139,6 +140,31 @@ Public Class Form1
         arkY_A4S = pARK.Height - y_panel + arkY_A4
         rtbARK.Size = New Size(arkX_A4, arkY_A4S)
         rtbARK.Location = New Point(arkX_pos, arkY_pos)
+    End Sub
+
+    Private Sub RtbARK_KeyDown(sender As Object, e As KeyEventArgs) Handles rtbARK.KeyDown 'Copilots förslag: När man kopierar från en extern källa.
+        If e.Modifiers = Keys.Control AndAlso e.KeyCode = Keys.V Then
+            ' Stop the default paste action
+            e.Handled = True
+
+            Try
+                ' Check if the clipboard contains rich text format (RTF) data
+                If Clipboard.ContainsText(TextDataFormat.Rtf) Then
+                    ' Insert RTF data into the rich text box
+                    Dim rtfText As String = Clipboard.GetText(TextDataFormat.Rtf)
+                    rtbARK.SelectedRtf = rtfText
+                Else
+                    ' Insert plain text data into the rich text box
+                    Dim plainText As String = Clipboard.GetText(TextDataFormat.Text)
+                    Dim selectionStart As Integer = rtbARK.SelectionStart
+                    rtbARK.Text = rtbARK.Text.Insert(selectionStart, plainText)
+                    rtbARK.SelectionStart = selectionStart + plainText.Length
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Cannot insert object" & vbCrLf & ex.Message, "Object insert error", MessageBoxButtons.OK, MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign)
+            End Try
+        End If
     End Sub
 
     Private Sub IfFilesExist() 'Laddar jobb och skapar nya filer om någon saknas.
@@ -1019,8 +1045,8 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub BtnSPACE_Click(sender As Object, e As EventArgs) Handles btnSPACE.Click 'Avståndet mellan raderna.
-        FrmLineSpace.Show()
+    Private Sub BtnOFFSET_Click(sender As Object, e As EventArgs) Handles btnOFFSET.Click 'Avståndet mellan raderna.
+        FrmCharOffset.Show()
         IsSuper = True 'Återställer om man vill börja om från början.
     End Sub
 
@@ -1178,7 +1204,7 @@ Public Class Form1
         If rtbARK.SelectionRightIndent >= indent_V Then rtbARK.SelectionRightIndent -= indent_V
     End Sub
 
-    Private Sub BtnRESETINDENT_Click(sender As Object, e As EventArgs) Handles btnRESETINDENT.Click 'Nollställ alla indrag.
+    Private Sub BtnRESETINDENT_Click(sender As Object, e As EventArgs) Handles btnRESETINDENT.Click 'Nollställer alla indrag.
         rtbARK.SelectionIndent = 0
         rtbARK.SelectionRightIndent = 0
         rtbARK.BulletIndent = 0
@@ -1358,7 +1384,7 @@ Public Class Form1
         Dim lbl4 As New Label With {
             .Name = "e_lblEE4",
             .Font = sfe14,
-            .Text = "Ver 1.1",
+            .Text = "Ver 1.2",
             .ForeColor = ecolor,
             .TextAlign = 2,
             .Size = New Size(190, 28),
@@ -1755,8 +1781,16 @@ Public Class Form1
         BtnJUST_Click(sender, e)
     End Sub
 
-    Private Sub TsmiSpacing_Click(sender As Object, e As EventArgs) Handles tsmiSpacing.Click 'Avståndet mellan raderna.
-        FrmLineSpace.Show()
+    Private Sub TsmiSpaceBetween_Click(sender As Object, e As EventArgs) Handles tsmiSpaceBetween.Click 'Olika avstånd.
+        FrmSpaceBetween.Show()
+    End Sub
+
+    Private Sub TsmiOffset_Click(sender As Object, e As EventArgs) Handles tsmiOffset.Click 'Teckenoffset.
+        FrmCharOffset.Show()
+    End Sub
+
+    Private Sub TsmiSpecial_Click(sender As Object, e As EventArgs) Handles tsmiSpecial.Click 'Specialformat.
+        FrmSpecialFormat.Show()
     End Sub
 
     Private Sub TsmiImageL_Click(sender As Object, e As EventArgs) Handles tsmiImageL.Click 'Ladda ner en bild.
@@ -1968,6 +2002,10 @@ Public Class Form1
             FrmBullet.nudRI.Font = sfe11C
             FrmBullet.lblBULLET.Font = sfe11
             FrmBullet.lblTEXT.Font = sfe11
+            'FrmCharOffset:
+            FrmCharOffset.lblOFFSET.Font = sfe11
+            FrmCharOffset.nudOFFSET.Font = sfe11C
+            FrmCharOffset.btnRESET.Font = sfe8
             'FrmEncoding:
             FrmEncoding.rbECAUTO.Font = sfe11
             FrmEncoding.rbECANSI.Font = sfe11
@@ -1984,10 +2022,6 @@ Public Class Form1
             FrmIndent.nudINDENT.Font = sfe11C
             FrmIndent.lblHANGING.Font = sfe11
             FrmIndent.nudHANGING.Font = sfe11C
-            'FrmLineSpace:
-            FrmLineSpace.lblSPACE.Font = sfe11
-            FrmLineSpace.nudSPACE.Font = sfe11C
-            FrmLineSpace.btnRESET.Font = sfe8
             'FrmListStyle:
             FrmListStyle.rbNUMB.Font = sfe11
             FrmListStyle.rbLETT.Font = sfe11
@@ -2000,13 +2034,6 @@ Public Class Form1
             FrmListStyle.btnSAVE.Font = sfe8
             FrmListStyle.lblINFO1.Font = sfe11I
             FrmListStyle.lblINFO2.Font = sfe11I
-            'FrmSearch:
-            FrmSearch.lblSEARCH.Font = sfe11
-            FrmSearch.btnSEARCH.Font = sfe8
-            FrmSearch.cbCASE.Font = sfe10
-            FrmSearch.cbWHOLE.Font = sfe10
-            FrmSearch.lblFINDS.Font = sfe11
-            FrmSearch.btnCLEAR.Font = sfe8
             'FrmReplace:
             FrmReplace.lblSEARCH.Font = sfe11
             FrmReplace.btnSEARCH.Font = sfe8
@@ -2017,6 +2044,53 @@ Public Class Form1
             FrmReplace.cbWHOLE.Font = sfe10
             FrmReplace.lblFINDS.Font = sfe11
             FrmReplace.btnREPLACEALL.Font = sfe8
+            'FrmSearch:
+            FrmSearch.lblSEARCH.Font = sfe11
+            FrmSearch.btnSEARCH.Font = sfe8
+            FrmSearch.cbCASE.Font = sfe10
+            FrmSearch.cbWHOLE.Font = sfe10
+            FrmSearch.lblFINDS.Font = sfe11
+            FrmSearch.btnCLEAR.Font = sfe8
+            'FrmSpaceBetween:
+            FrmSpaceBetween.lblSPACEB1.Font = sfe11
+            FrmSpaceBetween.lblSPACEB2.Font = sfe11
+            FrmSpaceBetween.lblSPACEB3.Font = sfe11
+            FrmSpaceBetween.lblSPACEB4.Font = sfe11
+            FrmSpaceBetween.tbSPACEB1.Font = sfe11C
+            FrmSpaceBetween.nudSPACEB2.Font = sfe11C
+            FrmSpaceBetween.nudSPACEB3.Font = sfe11C
+            FrmSpaceBetween.nudSPACEB4.Font = sfe11C
+            FrmSpaceBetween.btnAPPLY1.Font = sfe8
+            FrmSpaceBetween.btnAPPLY2.Font = sfe8
+            FrmSpaceBetween.btnAPPLY3.Font = sfe8
+            FrmSpaceBetween.btnR1.Font = sfe8
+            FrmSpaceBetween.btnR2.Font = sfe8
+            FrmSpaceBetween.btnR3.Font = sfe8
+            'FrmSpecialFormat:
+            FrmSpecialFormat.rbULD.Font = sfe11
+            FrmSpecialFormat.rbULDASH.Font = sfe11
+            FrmSpecialFormat.rbULDASHD.Font = sfe11
+            FrmSpecialFormat.rbULDASHDD.Font = sfe11
+            FrmSpecialFormat.rbULDB.Font = sfe11
+            FrmSpecialFormat.rbULHWAVE.Font = sfe11
+            FrmSpecialFormat.rbULLDASH.Font = sfe11
+            FrmSpecialFormat.rbULTH.Font = sfe11
+            FrmSpecialFormat.rbULTHD.Font = sfe11
+            FrmSpecialFormat.rbULTHDASH.Font = sfe11
+            FrmSpecialFormat.rbULTHDASHD.Font = sfe11
+            FrmSpecialFormat.rbULTHDASHDD.Font = sfe11
+            FrmSpecialFormat.rbULTHLDASH.Font = sfe11
+            FrmSpecialFormat.rbULULDBWAVE.Font = sfe11
+            FrmSpecialFormat.rbULW.Font = sfe11
+            FrmSpecialFormat.rbULWAVE.Font = sfe11
+            FrmSpecialFormat.rbEMBO.Font = sfe11
+            FrmSpecialFormat.rbIMPR.Font = sfe11
+            FrmSpecialFormat.rbSCAPS.Font = sfe11
+            FrmSpecialFormat.rbSUB.Font = sfe11
+            FrmSpecialFormat.rbSUPER.Font = sfe11
+            FrmSpecialFormat.rbSHAD.Font = sfe11
+            FrmSpecialFormat.btnAPPLY.Font = sfe8
+            FrmSpecialFormat.btnCLEAR.Font = sfe8
             'FrmTab:
             FrmTab.lblTAB.Font = sfe11
             FrmTab.nudTAB.Font = sfe11C
@@ -2043,7 +2117,7 @@ Public Class Form1
             btnU.Font = sfe8U
             btnS.Font = sfe8
             btnSUP.Font = sfe8
-            btnSPACE.Font = sfe8
+            btnOFFSET.Font = sfe8
             btnSEARCH.Font = sfe8
             btnREPLACE.Font = sfe8
             btnPREVIEW.Font = sfe8

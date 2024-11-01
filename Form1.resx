@@ -143,6 +143,9 @@
         x2VeVf0AEPRPX8DVXn0AAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="a4wToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>740, 17</value>
+  </metadata>
   <metadata name="a4wPrintDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>854, 17</value>
   </metadata>

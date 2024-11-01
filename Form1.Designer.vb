@@ -64,7 +64,8 @@ Partial Class Form1
         tsmiAlignR = New ToolStripMenuItem()
         tsmiAlignJ = New ToolStripMenuItem()
         tssSpacing = New ToolStripSeparator()
-        tsmiSpacing = New ToolStripMenuItem()
+        tsmiSpaceBetween = New ToolStripMenuItem()
+        tsmiSpecial = New ToolStripMenuItem()
         tsmOBJECT = New ToolStripMenuItem()
         tsmiImageL = New ToolStripMenuItem()
         tsmiBrowser = New ToolStripMenuItem()
@@ -135,7 +136,7 @@ Partial Class Form1
         btnU = New Button()
         btnI = New Button()
         btnS = New Button()
-        btnSPACE = New Button()
+        btnOFFSET = New Button()
         nudSL = New NumericUpDown()
         btnNL = New Button()
         btnOHM = New Button()
@@ -147,6 +148,7 @@ Partial Class Form1
         btnINDENT = New Button()
         imgOpenFileDialog = New OpenFileDialog()
         a4wPrintPreviewDialog = New PrintPreviewDialog()
+        tsmiOffset = New ToolStripMenuItem()
         pARK.SuspendLayout()
         a4wMenyStrip.SuspendLayout()
         CType(nudLEFT, ComponentModel.ISupportInitialize).BeginInit()
@@ -392,7 +394,7 @@ Partial Class Form1
         ' tsmFORMAT
         ' 
         tsmFORMAT.BackColor = SystemColors.Control
-        tsmFORMAT.DropDownItems.AddRange(New ToolStripItem() {tsmiFont, tsmiFColor, tsmiBColor, tsmiA4BColor, tsmiCap, tsmiLow, tssAlignL, tsmiAlignL, tsmiAlignC, tsmiAlignR, tsmiAlignJ, tssSpacing, tsmiSpacing})
+        tsmFORMAT.DropDownItems.AddRange(New ToolStripItem() {tsmiFont, tsmiFColor, tsmiBColor, tsmiA4BColor, tsmiCap, tsmiLow, tssAlignL, tsmiAlignL, tsmiAlignC, tsmiAlignR, tsmiAlignJ, tssSpacing, tsmiSpaceBetween, tsmiOffset, tsmiSpecial})
         tsmFORMAT.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         tsmFORMAT.ForeColor = SystemColors.WindowFrame
         tsmFORMAT.Name = "tsmFORMAT"
@@ -492,14 +494,23 @@ Partial Class Form1
         tssSpacing.Name = "tssSpacing"
         tssSpacing.Size = New Size(178, 6)
         ' 
-        ' tsmiSpacing
+        ' tsmiSpaceBetween
         ' 
-        tsmiSpacing.BackColor = Color.LightCyan
-        tsmiSpacing.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        tsmiSpacing.ForeColor = Color.Indigo
-        tsmiSpacing.Name = "tsmiSpacing"
-        tsmiSpacing.Size = New Size(181, 22)
-        tsmiSpacing.Text = "Line Spacing"
+        tsmiSpaceBetween.BackColor = Color.LightCyan
+        tsmiSpaceBetween.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        tsmiSpaceBetween.ForeColor = Color.Indigo
+        tsmiSpaceBetween.Name = "tsmiSpaceBetween"
+        tsmiSpaceBetween.Size = New Size(181, 22)
+        tsmiSpaceBetween.Text = "Space Between"
+        ' 
+        ' tsmiSpecial
+        ' 
+        tsmiSpecial.BackColor = Color.LightCyan
+        tsmiSpecial.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        tsmiSpecial.ForeColor = Color.Indigo
+        tsmiSpecial.Name = "tsmiSpecial"
+        tsmiSpecial.Size = New Size(181, 22)
+        tsmiSpecial.Text = "Special Format"
         ' 
         ' tsmOBJECT
         ' 
@@ -1144,7 +1155,7 @@ Partial Class Form1
         btnRESETINDENT.Name = "btnRESETINDENT"
         btnRESETINDENT.Size = New Size(24, 24)
         btnRESETINDENT.TabIndex = 44
-        a4wToolTip.SetToolTip(btnRESETINDENT, "Reset ALL Indent")
+        a4wToolTip.SetToolTip(btnRESETINDENT, "Reset ALL indents")
         btnRESETINDENT.UseVisualStyleBackColor = True
         ' 
         ' btnIMAGE
@@ -1343,21 +1354,21 @@ Partial Class Form1
         a4wToolTip.SetToolTip(btnS, "Strikeout")
         btnS.UseVisualStyleBackColor = False
         ' 
-        ' btnSPACE
+        ' btnOFFSET
         ' 
-        btnSPACE.BackColor = Color.Silver
-        btnSPACE.Cursor = Cursors.Hand
-        btnSPACE.Font = New Font("SF Electrotome", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
-        btnSPACE.ForeColor = Color.Navy
-        btnSPACE.Location = New Point(224, 82)
-        btnSPACE.Margin = New Padding(3, 0, 3, 3)
-        btnSPACE.Name = "btnSPACE"
-        btnSPACE.Size = New Size(24, 20)
-        btnSPACE.TabIndex = 58
-        btnSPACE.Text = "="
-        btnSPACE.TextAlign = ContentAlignment.TopCenter
-        a4wToolTip.SetToolTip(btnSPACE, "V alignment or line spacing")
-        btnSPACE.UseVisualStyleBackColor = False
+        btnOFFSET.BackColor = Color.Silver
+        btnOFFSET.Cursor = Cursors.Hand
+        btnOFFSET.Font = New Font("SF Electrotome", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btnOFFSET.ForeColor = Color.Navy
+        btnOFFSET.Location = New Point(224, 82)
+        btnOFFSET.Margin = New Padding(3, 0, 3, 3)
+        btnOFFSET.Name = "btnOFFSET"
+        btnOFFSET.Size = New Size(24, 20)
+        btnOFFSET.TabIndex = 58
+        btnOFFSET.Text = "="
+        btnOFFSET.TextAlign = ContentAlignment.TopCenter
+        a4wToolTip.SetToolTip(btnOFFSET, "Character Offset")
+        btnOFFSET.UseVisualStyleBackColor = False
         ' 
         ' nudSL
         ' 
@@ -1473,6 +1484,15 @@ Partial Class Form1
         a4wPrintPreviewDialog.Name = "a4wPrintPreviewDialog"
         a4wPrintPreviewDialog.Visible = False
         ' 
+        ' tsmiOffset
+        ' 
+        tsmiOffset.BackColor = Color.LightCyan
+        tsmiOffset.Font = New Font("Microsoft New Tai Lue", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        tsmiOffset.ForeColor = SystemColors.ControlText
+        tsmiOffset.Name = "tsmiOffset"
+        tsmiOffset.Size = New Size(181, 22)
+        tsmiOffset.Text = "Character Offset"
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -1489,7 +1509,7 @@ Partial Class Form1
         Controls.Add(btnOHM)
         Controls.Add(btnNL)
         Controls.Add(nudSL)
-        Controls.Add(btnSPACE)
+        Controls.Add(btnOFFSET)
         Controls.Add(btnS)
         Controls.Add(btnI)
         Controls.Add(btnU)
@@ -1629,7 +1649,7 @@ Partial Class Form1
     Friend WithEvents tsmiAlignR As ToolStripMenuItem
     Friend WithEvents tsmiAlignJ As ToolStripMenuItem
     Friend WithEvents tssSpacing As ToolStripSeparator
-    Friend WithEvents tsmiSpacing As ToolStripMenuItem
+    Friend WithEvents tsmiSpecial As ToolStripMenuItem
     Friend WithEvents tsmOBJECT As ToolStripMenuItem
     Friend WithEvents tsmiImageL As ToolStripMenuItem
     Friend WithEvents tsmiBrowser As ToolStripMenuItem
@@ -1664,7 +1684,7 @@ Partial Class Form1
     Friend WithEvents btnU As Button
     Friend WithEvents btnI As Button
     Friend WithEvents btnS As Button
-    Friend WithEvents btnSPACE As Button
+    Friend WithEvents btnOFFSET As Button
     Friend WithEvents nudSL As NumericUpDown
     Friend WithEvents btnNL As Button
     Friend WithEvents tsmiCap As ToolStripMenuItem
@@ -1686,4 +1706,6 @@ Partial Class Form1
     Friend WithEvents tsmiTXTsizefont As ToolStripMenuItem
     Friend WithEvents tsmiINITpos As ToolStripMenuItem
     Friend WithEvents tsmiSpellcheck As ToolStripMenuItem
+    Friend WithEvents tsmiSpaceBetween As ToolStripMenuItem
+    Friend WithEvents tsmiOffset As ToolStripMenuItem
 End Class
